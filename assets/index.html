@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>Belajar Javascript | Serandal</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script language='javascript'>
+        $(document).ready(function () {
+
+            $('.word_count').each(function () {
+                var input = '#' + this.id;
+                var count = input + '_count';
+                $(count).show();
+                word_count(input, count);
+                $(this).keyup(function () { word_count(input, count) });
+            });
+
+        });
+
+        function word_count(field, count) {
+
+            var number = 0;
+            var matches = $(field).val().match(/\b/g);
+            if (matches) {
+                number = matches.length / 2;
+            }
+            $(count).text(number + ' word' + (number != 1 ? 's' : '') + ' approx');
+
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+
+        <div id="example1_count" style="display:none"></div>
+        <textarea id="example1" rows="5" cols="50" class="word_count"></textarea>
+
+        <div id="example2_count" style="display:none"></div>
+        <input id="example2" type="text" size="50" class="word_count" />
+
+    </form>
+</body>
+
+</html>

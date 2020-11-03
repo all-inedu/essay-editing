@@ -1,0 +1,53 @@
+.star-rating {
+    border: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 2em;
+    justify-content: right;
+    text-align: center;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: rgb(128, 128, 128);
+    cursor: pointer;
+}
+
+.star-rating :checked~label {
+    color: rgb(255, 212, 59);
+}
+
+.star-rating :hover~label {
+    color: rgb(250, 176, 5);
+}
+
+/* Star Rating Disabled */
+
+.star-ratings {
+    border: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 2em;
+    justify-content: right;
+    text-align: center;
+}
+
+.star-ratings input {
+    display: none;
+}
+
+.star-ratings label {
+    color: rgb(128, 128, 128);
+    cursor: pointer;
+}
+
+.star-ratings :checked~label {
+    color: rgb(255, 212, 59);
+}
+/* 
+.star-ratings :hover~label {
+    color: rgb(250, 176, 5);
+} */
