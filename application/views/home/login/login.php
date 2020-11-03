@@ -38,8 +38,8 @@ background: linear-gradient(to left, #0052D4, #65C7F7, #9CECFB);
                             <div class="col-lg-7 text-center bg-light">
                                 <!-- https://cdn.dribbble.com/users/558267/screenshots/3087122/day-and-night.gif -->
 
-                                <img src="<?=base_url('assets/img/login.png');?>"
-                                    width="50%" height="50%" class="mt-4">
+                                <img src="<?=base_url('assets/img/editor.gif');?>" width="50%" height="50%"
+                                    class="mt-4">
                             </div>
                             <div class="col-lg-5 pr-5 pl-5 pt-5 pb-4">
                                 <div class="">
