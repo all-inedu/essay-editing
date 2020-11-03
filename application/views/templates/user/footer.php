@@ -5,7 +5,7 @@
 <footer class="sticky-footer bg-dark">
     <div class="container my-auto">
         <div class="copyright text-center text-white my-auto">
-            <span>Copyright &copy; All-In Eduspace 2019</span>
+            <span>Copyright &copy; <?=date("Y");?> | All-In Eduspace </span>
         </div>
     </div>
 </footer>
