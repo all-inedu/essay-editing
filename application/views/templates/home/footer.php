@@ -35,16 +35,16 @@
 
                       <!-- Open Times -->
                       <div class="open-time">
-                          <p>Monday: Friday: 10.00 - 23.00</p>
-                          <p>Saturday: 10.00 - 19.00</p>
+                          <p>Monday - Saturday<br>
+                              08.00 - 17.00</p>
                       </div>
 
                       <!-- Social Info -->
                       <div class="social-info">
-                          <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
-                          <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-                          <a href="#" class="google-plus"><i class="fab fa-google-plus"></i></a>
-                          <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                          <a href="https://www.facebook.com/allineduspace/" target="_blank" class="facebook"><i
+                                  class="fab fa-facebook"></i></a>
+                          <a href="https://www.instagram.com/allineduspace/" target="_blank" class="instagram"><i
+                                  class="fab fa-instagram"></i></a>
                       </div>
                   </div>
               </div>
@@ -59,6 +59,7 @@
                       <!-- Contact Address -->
                       <div class="contact-address">
                           <p>Tel: <a href="tel:+6281808081363">+62 818 0808 1363</a></p>
+                          <p>Tel: <a href="tel:+6287860811413">+62 878 6081 1413</a></p>
                           <p>E-mail: info@all-inedu.com</p>
                           <p>Address: Jl. Panjang No. 36 Kebon Jeruk Jakarta Barat</p>
                       </div>
