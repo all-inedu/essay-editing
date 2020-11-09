@@ -7,11 +7,11 @@ class Mail_smtp
     public function smtp()
     {
         $config = [
-            'protocol' => 'mail',
+            'protocol' => 'smtp',
             'smtp_crypto' => 'tls',
-            'smtp_host' => 'all-inedu.com',
-            'smtp_user' => 'essay@all-inedu.com',
-            'smtp_pass' => 'essay-editing',
+            'smtp_host' => 'smtp.gmail.com',
+            'smtp_user' => 'hafidz.bdt@gmail.com',
+            'smtp_pass' => 'ohojtrsmczgliiqy',
             'smtp_port' => 587,
             'mailtype' => 'html',
             'charset' => 'utf-8',
