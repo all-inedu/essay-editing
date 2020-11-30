@@ -55,6 +55,10 @@
         font-family: 'Roboto', sans-serif;
     }
 
+    p {
+        line-height: 1.6 !important;
+    }
+
     .table td, .table th {
         padding: 8px 10px !important;
     }
