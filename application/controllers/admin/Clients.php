@@ -34,11 +34,11 @@ class Clients extends CI_Controller
     public function sycnCRMClients()
     {
         $dataCRM = $this->Clients_model->getAllClientsCrm();
-        $no=0;  
-        foreach($dataCRM as $d):
+        $no = 0;
+        foreach ($dataCRM as $d):
             $email = $dataCRM[$no]['email'];
             $data = $this->Clients_model->checkClientById($email);
-            if(empty($data)){
+            if (empty($data)) {
                 $students = [
                     'id_clients' => $dataCRM[$no]['id'],
                     'first_name' => $dataCRM[$no]['first_name'],
@@ -53,11 +53,10 @@ class Clients extends CI_Controller
                 ];
                 $this->Clients_model->importClientsCRM($students);
             }
-        $no++;
+            $no++;
         endforeach;
 
-        $this->session->set_flashdata('success', '
-        Clients CRM data synchronization <br> has been successful');
+        $this->session->set_flashdata('success', 'Clients CRM data synchronization <br> has been successful');
         redirect('admin/clients');
     }
 
@@ -72,7 +71,7 @@ class Clients extends CI_Controller
         $this->load->view('templates/user/sidebar', $data);
         $this->load->view('templates/user/topbar');
         $this->load->view('user/admin/clients/view');
-        $this->load->view('templates/user/footer');       
+        $this->load->view('templates/user/footer');
     }
 
 }

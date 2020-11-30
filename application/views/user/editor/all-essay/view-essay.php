@@ -41,6 +41,12 @@
                                 value="<?=$essay_editor['first_name'].' '.$essay_editor['last_name'];?>"
                                 class="form-control form-control-sm">
                             <?php } ?>
+                            <?php 
+                               if($essay['id_editors']>0) {
+                                    $req = $this->Editors_model->getAllEditorsById($essay['id_editors']);
+                                    echo "Request (". $req['first_name'].' '.$req['last_name'].")";
+                               }
+                            ?>
                             <hr>
                             <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
                                 data-target="#assignEditor"><i class="fas fa-paper-plane"></i> &nbsp; Select The

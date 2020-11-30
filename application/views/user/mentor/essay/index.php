@@ -12,6 +12,7 @@
                              <th width="1%">No</th>
                              <th>Student Name</th>
                              <th>Editor Name</th>
+                             <th>Request (Editor)</th>
                              <th>Essay Title</th>
                              <th>Essay Deadline</th>
                              <th>App Deadline</th>
@@ -44,6 +45,16 @@
                                             echo '<div class="text-left"> - </div>';
                                         }
                                     ?>
+                             </td>
+                             <td class="align-middle">
+                                <?php 
+                                    if($e['id_editors']>0) {
+                                        $req = $this->Editors_model->getAllEditorsById($e['id_editors']);
+                                        echo $req['first_name'].' '.$req['last_name'];
+                                    } else {
+                                        echo '-';
+                                    }
+                                ?>
                              </td>
                              <td class="align-middle"><?=$e['essay_title'];?></td>
                              <td class="align-middle" data-sort="<?=$e['essay_deadline'];?>"><?=date('D, d M Y', strtotime($e['essay_deadline']));?></td>

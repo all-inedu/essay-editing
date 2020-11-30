@@ -46,6 +46,16 @@ class Editors_model extends CI_model
         return $this->db->get()->result_array();
     }
 
+    public function getAllEditor() 
+    {
+        $this->db->select('*');
+        $this->db->from('tbl_editors');
+        $this->db->where('tbl_editors.status', 1);
+        $this->db->where('tbl_editors.position !=', 3);
+        $this->db->join('tbl_position_editors', 'tbl_position_editors.id_position = tbl_editors.position');
+        return $this->db->get()->result_array();
+    }
+
     public function getAllEditorsById($id='', $user='')
     {
         if($id){

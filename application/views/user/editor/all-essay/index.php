@@ -13,13 +13,13 @@
                                  <th>No</th>
                                  <th>Student Name</th>
                                  <th>Editor Name</th>
+                                 <th>Request (Editor)</th>
                                  <th>Program Name</th>
                                  <th width="15%">Essay Title</th>
                                  <th>Upload Date</th>
                                  <th>Essay Deadline</th>
                                  <th>App Deadline</th>
                                  <th width="10%">Status</th>
-                                 <th></th>
                              </tr>
                          </thead>
                          <tbody>
@@ -34,7 +34,7 @@
                                     $title = "Read";
                                 }
                             ?>
-                             <tr class="<?=$read;?>" data-toggle="tooltip" data-placement="top" title="<?=$title;?>">
+                             <tr class="<?=$read;?>" data-toggle="tooltip" data-placement="top" title="<?=$title;?>"  style="cursor:pointer" onclick="window.location='<?=base_url('editor/all-essay/status/'.$e['id_essay_clients']);?>'">
                                  <td class=" text-center align-middle"><?=$no;?></td>
                                  <td class="align-middle"><?=$e['first_name'] . ' ' . $e['last_name'];?></td>
                                  <td class="align-middle">
@@ -48,6 +48,16 @@
                                         }
                                     ?>
                                  </td>
+                                 <td class="align-middle">
+                                        <?php 
+                                            if($e['id_editors']>0) {
+                                                $req = $this->Editors_model->getAllEditorsById($e['id_editors']);
+                                                echo $req['first_name'].' '.$req['last_name'];
+                                            } else {
+                                                echo '-';
+                                            }
+                                        ?>
+                                 </td>
                                  <td class="align-middle"><?=$e['category_name'];?> Editing
                                      (<?=$e['minimum_word'].' - '.$e['maximum_word'].' Words)';?></td>
                                  <td class="align-middle"><?=$e['essay_title'];?></td>
@@ -58,9 +68,6 @@
                                  <td class="align-middle <?=$alert;?>">
                                      <?=$icon;?>&nbsp; <?=$e['status_title'];?>
                                  </td>
-                                 <td class="align-middle"><a
-                                         href="<?=base_url();?>editor/all-essay/status/<?php echo $e['id_essay_clients']; ?>"
-                                         class="btn btn-block btn-sm btn-primary"><i class="fas fa-search"></i></a></td>
                              </tr>
                              <?php $no++;endforeach;?>
                          </tbody>

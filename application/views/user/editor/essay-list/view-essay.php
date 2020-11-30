@@ -122,45 +122,33 @@
                         <?=form_open_multipart('');?>
                         <?=form_hidden('id_essay_clients', $essay['id_essay_clients']);?>
                         <?=form_hidden('id_essay_editors', $essay_editor['id_essay_editors']);?>
+                        <table class="table table-borderless table-sm text-dark">
+                            <tr>
+                                <td width="15%">University Name :</td>
+                                <td class="align-middle" width="1%">:</td>
+                                <td class="align-middle"><?=$essay['university_name'];?></td>
+                            </tr>
+                            <tr>
+                                <td width="15%">Essay Type</td>
+                                <td class="align-middle" width="1%">:</td>
+                                <td class="align-middle"><?=$essay['essay_title'];?></td>
+                            </tr>
+                            <tr>
+                                <td width="15%">Date</td>
+                                <td class="" width="1%">:</td>
+                                <td class="">
+                                    <p class="font-weight-bold"><i class="fa fa-calendar"></i>  &nbsp; Essay Deadline : <?=date('D, d M Y', strtotime($essay['essay_deadline']));?></p>
+                                    <p class="font-weight-bold"><i class="fa fa-calendar"></i>  &nbsp; Application Deadline : <?=date('D, d M Y', strtotime($essay['application_deadline']));?></p>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="15%">Essay Prompt</td>
+                                <td width="1%">:</td>
+                                <td><?=$essay['essay_prompt'];?></td>
+                            </tr>
+                        </table>
                         <div class="bg-default">
-                            <div class="form-group row">
-                                <div class="col-md-6">
-                                    <div class="mb-2">
-                                        <label class="text-dark">University Name :</label>
-                                        <input readonly type="text" name="trans" value="<?=$essay['university_name'];?>"
-                                            class="form-control form-control-sm">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-2">
-                                        <label class="text-dark">Essay Title :</label>
-                                        <input readonly type="text" name="trans" value="<?=$essay['essay_title'];?>"
-                                            class="form-control form-control-sm">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <label class="text-dark">Essay Prompt :</label>
-                                    <textarea name="description" id="desc" class="form-control form-control-sm" rows="8"
-                                        disabled><?=$essay['essay_prompt'];?>
-                                </textarea>
-                                </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-md-6 mb-3">
-                                    <label class="text-dark">Essay Deadline :</label>
-                                    <input type="text" name="essay_deadline" class="form-control form-control-sm"
-                                        value="&#xf073; &nbsp; <?=date('D, d M Y', strtotime($essay['essay_deadline']));?>"
-                                        readonly>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="text-dark">Application Deadline :</label>
-                                    <input type="text" name="app_deadline" class="form-control form-control-sm"
-                                        value="&#xf073; &nbsp; <?=date('D, d M Y', strtotime($essay['application_deadline']));?>"
-                                        readonly>
-                                </div>
-                            </div>
                             <!-- Accept -->
                             <?php  if ($status['status'] == '1') {?>
                             <hr>

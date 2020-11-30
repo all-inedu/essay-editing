@@ -85,7 +85,7 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('table').DataTable({
         rowReorder: {
-            selector: 'td:nth-child(2)'
+            selector: 'td:nth-child(1)'
         },
         responsive: true
     });

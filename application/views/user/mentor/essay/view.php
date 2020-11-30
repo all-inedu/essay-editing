@@ -134,8 +134,8 @@
                 </div>
 
 
-                <div class=" card mb-2">
-                    <div class="card-header3">
+                <div class="card mb-2">
+                    <div class="card-header">
                         <div class="float-left mt-2"><i class="fas fa-users"></i>&nbsp; Basic Info</div>
                         <div class="float-right">
                             <a href="<?=base_url('mentor/essay-list');?>" class="btn btn-sm btn-light text-decoration-none text-dark"><i class="fas fa-arrow-left"></i></a>
@@ -144,8 +144,8 @@
                                                          data-message="essay"><i class="fas fa-trash"></i></a>    
                         </div>
                     </div>
-                    <div class="card-body ">
-                        <table class="table table-borderless table-sm text-dark" style="font-size:13px;">
+                    <div class="card-body">
+                        <table class="table table-borderless table-sm text-dark">
                             <tr>
                                 <td width="15%">Full Name</td>
                                 <td width="1%">:</td>
@@ -170,70 +170,70 @@
                     <div class="card-header">
                         <i class="fas fa-tasks"></i>&nbsp; Essay Detail
                     </div>
-                    <div class="card-body ">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="form-group">
-                                    <label class="text-dark">Essay Title :</label>
-                                    <input readonly type="hidden" name="id" value="<?=$program['id_program'];?>">
-                                    <input readonly type="text" value="<?=$program['category_name'];?> Editing"
-                                        class="form-control form-control-sm">
-                                </div>
-                            </div>
-                            <div class="col-md-5 mb-3">
-                                <label class="text-dark">Number of Words :</label>
-                                <input name="words" type="text" class="form-control form-control-sm"
-                                    value="<?=$program['minimum_word'].' - '.$program['maximum_word'];?> Words"
-                                    readonly>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label class="text-dark">University Name :</label>
+                    <div class="card-body">
+                        <table class="table table-borderless table-sm text-dark">
+                            <tr>
+                                <td width="15%">Essay Title</td>
+                                <td class="align-middle" width="1%">:</td>
+                                <td class="align-middle"><?=$program['category_name'];?> Editing (<?=$program['minimum_word'].' - '.$program['maximum_word'];?> Words)</td>
+                            </tr>
+                            <tr>
+                                <td width="15%">University Name</td>
+                                <td class="align-middle" width="1%">:</td>
+                                <td class="align-middle"><?=$essay['university_name'];?></td>
+                            </tr>
+                            <?php if ($status['status'] != '7') {?>
+                            <tr>
+                                <td width="15%">Request (Editor)</td>
+                                <td class="align-middle" width="1%">:</td>
+                                <td class="align-middle">
+                                    <?php 
+                                    if($essay['id_editors']>0) {
+                                        $req = $this->Editors_model->getAllEditorsById($essay['id_editors']);
+                                        echo $req['first_name'].' '.$req['last_name'];
+                                    } else {
+                                        echo '-';
+                                    }
+                                ?>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                            <tr>
+                                <td width="15%">Essay Type</td>
+                                <td class="align-middle" width="1%">:</td>
+                                <td class="align-middle"><?=$essay['essay_title'];?></td>
+                            </tr>
+                            <tr>
+                                <td width="15%">Date</td>
+                                <td class="" width="1%">:</td>
+                                <td class="">
+                                    <p class="font-weight-bold"><i class="fa fa-calendar"></i>  &nbsp; Essay Deadline : <?=date('D, d M Y', strtotime($essay['essay_deadline']));?></p>
+                                    <p class="font-weight-bold"><i class="fa fa-calendar"></i>  &nbsp; Application Deadline : <?=date('D, d M Y', strtotime($essay['application_deadline']));?></p>
 
-                                <input readonly type="text" name="trans" value="<?=$essay['university_name'];?>"
-                                    class="form-control form-control-sm">
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <label class="text-dark">Essay Type : </label>
-
-                                <input readonly type="text" name="trans" value="<?=$essay['essay_title'];?>"
-                                    class="form-control form-control-sm">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="text-dark">Essay Prompt : </label>
-                            <textarea name="description" id="desc" class="form-control form-control-sm" rows="4"
-                                disabled><?=$essay['essay_prompt'];?>
-                            </textarea>
-                        </div>
-
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label class="text-dark">Essay Deadline :</label>
-                                <input type="text" name="essay_deadline" class="form-control form-control-sm"
-                                    value="&#xf073; &nbsp; <?=date('D, d M Y', strtotime($essay['essay_deadline']));?>"
-                                    readonly>
-                            </div>
-                            <div class="col mb-3">
-                                <label class="text-dark">Application Deadline :</label>
-                                <input type="text" name="app_deadline" class="form-control form-control-sm"
-                                    value="&#xf073; &nbsp; <?=date('D, d M Y', strtotime($essay['application_deadline']));?>"
-                                    readonly>
-                            </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width="15%">Essay Prompt</td>
+                                <td width="1%">:</td>
+                                <td><?=$essay['essay_prompt'];?></td>
+                            </tr>
                             <?php if (($essay['status_essay_clients']=='7')) { ?>
-                            <div class="col-md-3 mb-3">
-                                <label class="text-dark">Editor Upload Date :</label>
-                                <input type="text" name="app_deadline" class="form-control form-control-sm"
-                                    value="&#xf073; &nbsp; <?=date('D, d M Y', strtotime($essay_editors['uploaded_at']));?>"
-                                    readonly>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <label class="text-dark">Essay Status :</label>
+                            <tr>
+                                <td width="15%">Editor Upload Date</td>
+                                <td class="" width="1%">:</td>
+                                <td class="">
+                                <p class="font-weight-bold"><i class="fa fa-calendar"></i>  &nbsp; <?=date('D, d M Y', strtotime($essay_editors['uploaded_at']));?></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle" width="15%">Essay Status</td>
+                                <td class="align-middle" width="1%">:</td>
+                                <td class="align-middle">
                                 <?=$status_essay;?>
-                            </div>
+                                </td>
+                            </tr>
                             <?php }?>
-                        </div>
+                        </table>
                     </div>
                 </div>
 

@@ -9,7 +9,7 @@
                     <div class="card-body ">
                         <?=form_open_multipart('');?>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="text-dark">Essay Title :</label>
                                     <input readonly type="hidden" name="id" value="">
@@ -17,7 +17,31 @@
                                         class="form-control form-control-sm">
                                 </div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                                <div class="col-md-6 mb-3">
+                                    <label class="text-dark">Student Name : <span class="text-danger">*</span></label>
+                                    <select name="student" id="student">
+                                        <option data-placeholder="true"></option>
+                                        <!-- <option value="">Select student name.</option> -->
+                                        <?php foreach($students as $s):?>
+                                        <option value="<?=$s['email'];?>">&#xf007; &nbsp;
+                                            <?=$s['first_name'].' '.$s['last_name'];?></option>
+                                        <?php endforeach;?>
+                                    </select>
+                                    <?=form_error('student', '<small
+                                            class="text-info"><span class="text-danger">*</span>&nbsp;', '</small>');?>
+                                </div>
+                            <div class="col-md-6  mb-3">
+                                <label class="text-dark">Request (Editor) :</label>
+                                <select name="id_editors" id="editors">
+                                    <option data-placeholder="true"></option>
+                                    <!-- <option value="">Select number of word.</option> -->
+                                    <?php foreach($editor as $e):?>
+                                    <option value="<?=$e['id_editors'];?>">&#xf044; &nbsp;
+                                        <?=$e['first_name'].' '.$e['last_name'];?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <label class="text-dark">Number of Words : <span class="text-danger">*</span></label>
                                 <select name="words" id="words">
                                     <option data-placeholder="true"></option>
@@ -28,19 +52,6 @@
                                     <?php endforeach;?>
                                 </select>
                                 <?=form_error('words', '<small
-                                        class="text-info"><span class="text-danger">*</span>&nbsp;', '</small>');?>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label class="text-dark">Student Name : <span class="text-danger">*</span></label>
-                                <select name="student" id="student">
-                                    <option data-placeholder="true"></option>
-                                    <!-- <option value="">Select student name.</option> -->
-                                    <?php foreach($students as $s):?>
-                                    <option value="<?=$s['email'];?>">&#xf007; &nbsp;
-                                        <?=$s['first_name'].' '.$s['last_name'];?></option>
-                                    <?php endforeach;?>
-                                </select>
-                                <?=form_error('student', '<small
                                         class="text-info"><span class="text-danger">*</span>&nbsp;', '</small>');?>
                             </div>
                         </div>
@@ -161,6 +172,11 @@
 <script src="<?=base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
 <script src="<?=base_url('assets/js/jquery.chained.min.js');?>"></script>
 <script>
+new SlimSelect({
+    select: '#editors',
+    placeholder: 'Select editor.'
+})
+
 new SlimSelect({
     select: '#words',
     placeholder: 'Select number of words.'

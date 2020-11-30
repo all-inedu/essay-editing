@@ -55,6 +55,14 @@
         font-family: 'Roboto', sans-serif;
     }
 
+    .table td, .table th {
+        padding: 8px 10px !important;
+    }
+
+    .form-control, .thumbnail {
+        font-size: 13px !important;
+    }
+
     /* table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before,
     table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
         background-color: #4988ff;

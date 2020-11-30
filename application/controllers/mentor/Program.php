@@ -46,6 +46,7 @@ class Program extends CI_Controller
         $mentor = $this->mentors->getMentorsMail($email);
         $id = $mentor['id_mentors'];
         $data['students'] = $this->Clients_model->getAllClientsByMentor($id);
+        $data['editor'] = $this->editors->getAllEditor();
         $data['univ'] = $this->essay->getAllUniv();
         $data['prompt'] = $this->essay->getAllEssayPrompt();
         $data['menus'] = 'program';
@@ -121,6 +122,7 @@ class Program extends CI_Controller
                     'id_transaction' => $code,
                     'id_program' => $this->input->post('words'),
                     'id_univ' => $this->input->post('univ_name'),
+                    'id_editors' => $this->input->post('id_editors'),
                     'essay_title' => $title,
                     'essay_prompt' => $this->input->post('essay_prompt'),
                     'email' => $student_mail,
@@ -183,12 +185,13 @@ class Program extends CI_Controller
         $this->email->attach('upload_files/program/essay/students/' . $essay['attached_of_clients']);
 
             // Send Email
-        if ($this->email->send()) {
-            return true;
-        } else {
-            echo $this->email->print_debugger();
-            die;
-        }
+        $this->email->send();
+        // if ($this->email->send()) {
+        //     return true;
+        // } else {
+        //     echo $this->email->print_debugger();
+        //     die;
+        // }
     }
 
 

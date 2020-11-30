@@ -10,8 +10,12 @@ class Mail_smtp
             'protocol' => 'smtp',
             'smtp_crypto' => 'tls',
             'smtp_host' => 'smtp.gmail.com',
-            'smtp_user' => 'hafidz.bdt@gmail.com',
-            'smtp_pass' => 'ohojtrsmczgliiqy',
+            // 'smtp_user' => 'hafidz.bdt@gmail.com',
+            // 'smtp_pass' => 'ohojtrsmczgliiqy',
+            'smtp_user' => 'all.in.eduspace@gmail.com',
+            'smtp_pass' => 'bwhlsupvcrqxhttj', 
+                            // bwhlsupvcrqxhttj
+                            // dyouvynzcxdgzewz
             'smtp_port' => 587,
             'mailtype' => 'html',
             'charset' => 'utf-8',
