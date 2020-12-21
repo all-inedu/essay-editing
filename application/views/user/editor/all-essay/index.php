@@ -34,7 +34,7 @@
                                     $title = "Read";
                                 }
                             ?>
-                             <tr class="<?=$read;?>" data-toggle="tooltip" data-placement="top" title="<?=$title;?>"  style="cursor:pointer" onclick="window.location='<?=base_url('editor/all-essay/status/'.$e['id_essay_clients']);?>'">
+                             <tr class="<?=$read;?>" data-toggle="tooltip" data-placement="top" title="<?=$title;?>"  style="cursor:pointer" onclick="window.open('<?=base_url('editor/all-essay/status/'.$e['id_essay_clients']);?>')">
                                  <td class=" text-center align-middle"><?=$no;?></td>
                                  <td class="align-middle"><?=$e['first_name'] . ' ' . $e['last_name'];?></td>
                                  <td class="align-middle">
