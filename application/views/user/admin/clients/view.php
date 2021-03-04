@@ -50,6 +50,20 @@
                                 <?=$user['address'];?>
                             </td>
                         </tr>
+                        <tr>
+                            <td width="30%"><i class="fas fa-user fa-fw text-dark"></i>&nbsp; Mentor Name</td>
+                            <td width="3%">:</td>
+                            <td>
+                                <select name="id_mentor" id="mentors" readonly>
+                                    <option data-placeholder="true"></option>
+                                    <!-- <option value="">Select student name.</option> -->
+                                    <?php foreach($mentors as $m):?>
+                                    <option value="<?=$m['id_mentors'];?>">&#xf007; &nbsp;
+                                        <?=$m['first_name'].' '.$m['last_name'];?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </td>
+                        </tr>
                         <!-- <tr>
                             <td width="30%"><i class="fas fa-calendar-alt fa-fw text-dark"></i>&nbsp; Birthdate</td>
                             <td width="3%">:</td>
@@ -176,3 +190,11 @@
     </div>
 
 </div>
+<script src="<?=base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
+<script>
+const mt = new SlimSelect({
+    select: '#mentors',
+    placeholder: 'Select mentor.'
+})
+mt.set('<?=$user['id_mentor'];?>');
+</script>

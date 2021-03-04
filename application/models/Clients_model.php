@@ -29,6 +29,7 @@ class Clients_model extends CI_model
         $this->db->from('tbl_clients');
         $this->db->where('tbl_clients.status', 1);
         $this->db->join('tbl_mentors', 'tbl_mentors.id_mentors = tbl_clients.id_mentor');
+        $this->db->order_by('tbl_clients.first_name','ASC');
         return $this->db->get()->result_array();
         // return $this->db->get_where('tbl_clients', ['status' => 1])->result_array();
     }

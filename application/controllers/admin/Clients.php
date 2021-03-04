@@ -9,6 +9,7 @@ class Clients extends CI_Controller
 
         $this->load->library('form_validation');
         $this->load->model('Clients_model');
+        $this->load->model('Mentors_model');
 
         $user = $this->session->userdata('email');
         $role = $this->session->userdata('role');
@@ -52,6 +53,20 @@ class Clients extends CI_Controller
                 ];
                 // echo json_encode($students);
                 $this->Clients_model->importClientsCRM($students);
+            } else {
+                $id = $cl['st_num'];
+                $data_update = [
+                    'first_name' => $cl['st_firstname'],
+                    'last_name' => $cl['st_lastname'],
+                    'phone' => $cl['st_phone'],
+                    'email' => $email,
+                    'id_mentor' => $cl['mt_id1'],
+                    'address' => $cl['st_address'],
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+
+                // echo json_encode($data_update);
+                $this->Clients_model->updateClientsById($id, $data_update);
             }
         endforeach;
         $this->session->set_flashdata('success', 'Clients CRM data synchronization <br> has been successful');
@@ -86,6 +101,7 @@ class Clients extends CI_Controller
     public function view($id)
     {
         $data['user'] = $this->Clients_model->getAllClientsById($id);
+        $data['mentors'] = $this->Mentors_model->getAllMentors();
         $data['menus'] = 'users';
         $data['submenus'] = 'clients';
         $data['readonly'] = 'readonly';
