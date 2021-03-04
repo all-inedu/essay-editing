@@ -33,32 +33,55 @@ class Clients extends CI_Controller
 
     public function sycnCRMClients()
     {
-        $dataCRM = $this->Clients_model->getAllClientsCrm();
-        $no = 0;
-        foreach ($dataCRM as $d):
-            $email = $dataCRM[$no]['email'];
+        $client = $this->Clients_model->getAllBigdata();
+        foreach ($client as $cl):
+            $email = $cl['st_mail'];
             $data = $this->Clients_model->checkClientById($email);
             if (empty($data)) {
                 $students = [
-                    'id_clients' => $dataCRM[$no]['id'],
-                    'first_name' => $dataCRM[$no]['first_name'],
-                    'last_name' => $dataCRM[$no]['last_name'],
-                    'phone' => $dataCRM[$no]['phone'],
+                    'id_clients' => $cl['st_num'],
+                    'first_name' => $cl['st_firstname'],
+                    'last_name' => $cl['st_lastname'],
+                    'phone' => $cl['st_phone'],
                     'email' => $email,
-                    'address' => $dataCRM[$no]['address'],
-                    'id_mentor' => $dataCRM[$no]['mentor_id'],
+                    'address' => $cl['st_address'],
+                    'id_mentor' => $cl['mt_id1'],
                     'status' => '1',
-                    'password' => $dataCRM[$no]['password'],
+                    'password' => $cl['st_password'],
                     'created_at' => date('Y-m-d H:i:s'),
                 ];
+                // echo json_encode($students);
                 $this->Clients_model->importClientsCRM($students);
             }
-            $no++;
         endforeach;
-
         $this->session->set_flashdata('success', 'Clients CRM data synchronization <br> has been successful');
         redirect('admin/clients');
+
+        // $dataCRM = $this->Clients_model->getAllClientsCrm();
+        // $no = 0;
+        // foreach ($dataCRM as $d):
+        //     $email = $dataCRM[$no]['email'];
+        //     $data = $this->Clients_model->checkClientById($email);
+        //     if (empty($data)) {
+        //         $students = [
+        //             'id_clients' => $dataCRM[$no]['id'],
+        //             'first_name' => $dataCRM[$no]['first_name'],
+        //             'last_name' => $dataCRM[$no]['last_name'],
+        //             'phone' => $dataCRM[$no]['phone'],
+        //             'email' => $email,
+        //             'address' => $dataCRM[$no]['address'],
+        //             'id_mentor' => $dataCRM[$no]['mentor_id'],
+        //             'status' => '1',
+        //             'password' => $dataCRM[$no]['password'],
+        //             'created_at' => date('Y-m-d H:i:s'),
+        //         ];
+        //         $this->Clients_model->importClientsCRM($students);
+        //     }
+        //     $no++;
+        // endforeach;
     }
+
+
 
     public function view($id)
     {
