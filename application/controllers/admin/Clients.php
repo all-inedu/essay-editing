@@ -36,7 +36,7 @@ class Clients extends CI_Controller
         $client = $this->Clients_model->getAllBigdata();
         foreach ($client as $cl):
             $email = $cl['st_mail'];
-            $data = $this->Clients_model->checkClientById($email);
+            $data = $this->Clients_model->checkClientById($cl['st_num']);
             if (empty($data)) {
                 $students = [
                     'id_clients' => $cl['st_num'],

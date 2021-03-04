@@ -7,7 +7,7 @@ class Essay_model extends CI_model
 
         date_default_timezone_set('Asia/Jakarta');
 
-        $this->db2 = $this->load->database('crm', true);
+        // $this->db2 = $this->load->database('crm', true);
     }
     
     public function countEssayUnreadMentor($user){

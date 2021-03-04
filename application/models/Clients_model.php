@@ -18,9 +18,9 @@ class Clients_model extends CI_model
         }
     }
 
-    public function checkClientById($email)
+    public function checkClientById($st_num)
     {
-        return $this->db->get_where('tbl_clients', ['email' => $email])->row_array();
+        return $this->db->get_where('tbl_clients', ['id_clients' => $st_num])->row_array();
     }
 
     public function getAllClients()
@@ -40,7 +40,7 @@ class Clients_model extends CI_model
 
     public function getAllBigdata()
     {
-        $this->db3->select('
+        $this->db2->select('
             tbl_stmentor.stmentor_id,
             tbl_stmentor.mt_id1,
             tbl_stmentor.mt_id2,
@@ -53,14 +53,14 @@ class Clients_model extends CI_model
             tbl_students.st_password,
             tbl_prog.prog_sub
         ');
-        $this->db3->from('tbl_stmentor');
-        $this->db3->join('tbl_stprog', 'tbl_stprog.stprog_id=tbl_stmentor.stprog_id');
-        $this->db3->join('tbl_students', 'tbl_students.st_num=tbl_stprog.st_num');
-        $this->db3->join('tbl_prog', 'tbl_prog.prog_id=tbl_stprog.prog_id');
-        $this->db3->where('tbl_prog.main_number', 1);
-        $this->db3->where('tbl_stmentor.mt_id1 !=', "");
-        $this->db3->where('tbl_stmentor.stmentor_id >', 342);
-        return $this->db3->get()->result_array();
+        $this->db2->from('tbl_stmentor');
+        $this->db2->join('tbl_stprog', 'tbl_stprog.stprog_id=tbl_stmentor.stprog_id');
+        $this->db2->join('tbl_students', 'tbl_students.st_num=tbl_stprog.st_num');
+        $this->db2->join('tbl_prog', 'tbl_prog.prog_id=tbl_stprog.prog_id');
+        $this->db2->where('tbl_prog.main_number', 1);
+        $this->db2->where('tbl_stmentor.mt_id1 !=', "");
+        $this->db2->where('tbl_stmentor.stmentor_id >', 0);
+        return $this->db2->get()->result_array();
     }
 
     public function getAllClientsById($id)

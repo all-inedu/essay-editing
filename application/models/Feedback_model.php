@@ -5,7 +5,7 @@ class Feedback_model extends CI_model
     {
         parent::__construct();
 
-        $this->db2 = $this->load->database('crm', true);
+        // $this->db2 = $this->load->database('crm', true);
     }
 
     public function getFeedbackById($id)

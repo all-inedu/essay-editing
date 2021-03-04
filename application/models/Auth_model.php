@@ -7,7 +7,7 @@ class Auth_model extends CI_model
     {
         parent::__construct();
 
-        $this->db2 = $this->load->database('crm', true);
+        // $this->db2 = $this->load->database('bigdata', true);
     }
 
     public function saveClients($data)
@@ -54,16 +54,16 @@ class Auth_model extends CI_model
     }
 
 
-    public function clientsByCrm($email)
-    {
-        if ($this->db2->get_where('dtb_admins', ['email' => $email])->row_array()) {
-            return $this->db2->get_where('dtb_admins', ['email' => $email])->row_array();
-        } else if ($this->db2->get_where('dtb_clients', ['email' => $email])->row_array()) {
-            return $this->db2->get_where('dtb_clients', ['email' => $email])->row_array();
-        } else if ($this->db2->get_where('dtb_mentors', ['email' => $email])->row_array()) {
-            return $this->db2->get_where('dtb_mentors', ['email' => $email])->row_array();
-        }
-    }
+    // public function clientsByCrm($email)
+    // {
+    //     if ($this->db2->get_where('dtb_admins', ['email' => $email])->row_array()) {
+    //         return $this->db2->get_where('dtb_admins', ['email' => $email])->row_array();
+    //     } else if ($this->db2->get_where('dtb_clients', ['email' => $email])->row_array()) {
+    //         return $this->db2->get_where('dtb_clients', ['email' => $email])->row_array();
+    //     } else if ($this->db2->get_where('dtb_mentors', ['email' => $email])->row_array()) {
+    //         return $this->db2->get_where('dtb_mentors', ['email' => $email])->row_array();
+    //     }
+    // }
 
     public function clientByToken($token)
     {
