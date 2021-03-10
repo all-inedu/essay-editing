@@ -35,9 +35,10 @@ class Clients extends CI_Controller
     public function sycnCRMClients()
     {
         $client = $this->Clients_model->getAllBigdata();
+        // echo json_encode($client);
         foreach ($client as $cl):
             $email = $cl['st_mail'];
-            $data = $this->Clients_model->checkClientById($cl['st_num']);
+            $data = $this->Clients_model->checkClientById($cl['st_mail']);
             if (empty($data)) {
                 $students = [
                     'id_clients' => $cl['st_num'],
@@ -53,21 +54,22 @@ class Clients extends CI_Controller
                 ];
                 // echo json_encode($students);
                 $this->Clients_model->importClientsCRM($students);
-            } else {
-                $id = $cl['st_num'];
-                $data_update = [
-                    'first_name' => $cl['st_firstname'],
-                    'last_name' => $cl['st_lastname'],
-                    'phone' => $cl['st_phone'],
-                    'email' => $email,
-                    'id_mentor' => $cl['mt_id1'],
-                    'address' => $cl['st_address'],
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ];
+            } 
+            // else {
+                // $id = $cl['st_num'];
+                // $data_update = [
+                //     'first_name' => $cl['st_firstname'],
+                //     'last_name' => $cl['st_lastname'],
+                //     'phone' => $cl['st_phone'],
+                //     'email' => $email,
+                //     'id_mentor' => $cl['mt_id1'],
+                //     'address' => $cl['st_address'],
+                //     'updated_at' => date('Y-m-d H:i:s'),
+                // ];
 
                 // echo json_encode($data_update);
-                $this->Clients_model->updateClientsById($id, $data_update);
-            }
+                // $this->Clients_model->updateClientsById($id, $data_update);
+            // }
         endforeach;
         $this->session->set_flashdata('success', 'Clients CRM data synchronization <br> has been successful');
         redirect('admin/clients');
