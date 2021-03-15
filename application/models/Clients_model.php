@@ -58,9 +58,9 @@ class Clients_model extends CI_model
         $this->db2->join('tbl_stprog', 'tbl_stprog.stprog_id=tbl_stmentor.stprog_id');
         $this->db2->join('tbl_students', 'tbl_students.st_num=tbl_stprog.st_num');
         $this->db2->join('tbl_prog', 'tbl_prog.prog_id=tbl_stprog.prog_id');
-        $this->db2->where('tbl_prog.main_number', 1);
+        $this->db2->where('tbl_prog.prog_sub', "Admissions Consulting");
         $this->db2->where('tbl_stmentor.mt_id1 !=', "");
-        $this->db2->where('tbl_stmentor.stmentor_id =', 298);
+        $this->db2->where('tbl_stmentor.stmentor_id >', 0);
         return $this->db2->get()->result_array();
     }
 
