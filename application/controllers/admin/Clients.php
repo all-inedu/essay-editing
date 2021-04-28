@@ -22,6 +22,25 @@ class Clients extends CI_Controller
 
     public function index()
     {
+        $bigdata_client = $this->Clients_model->getAllBigdata();
+        $bigdata_clients = [];
+        foreach ($bigdata_client as $cl):
+            $email = $cl['st_mail'];
+            $data = $this->Clients_model->checkClientById($cl['st_num']);
+            if (empty($data)) {
+                $students = [
+                    'id_clients' => $cl['st_num'],
+                    'first_name' => $cl['st_firstname'],
+                    'last_name' => $cl['st_lastname'],
+                    'phone' => $cl['st_phone'],
+                    'email' => $email,
+                    'id_mentor' => $cl['mt_id1'],
+                ];
+                $bigdata_clients[] = $students;
+            }
+        endforeach;
+
+        $data['bigdata_clients'] = $bigdata_clients;
         $data['clients'] = $this->Clients_model->getAllClients();
         $data['menus'] = 'users';
         $data['submenus'] = 'clients';
@@ -32,7 +51,7 @@ class Clients extends CI_Controller
         $this->load->view('templates/user/footer');
     }
 
-    public function sycnCRMClients()
+    public function syncCRMClients()
     {
         $client = $this->Clients_model->getAllBigdata();
         foreach ($client as $cl):
@@ -52,6 +71,7 @@ class Clients extends CI_Controller
                     'created_at' => date('Y-m-d H:i:s'),
                 ];
                 $this->Clients_model->importClientsCRM($students);
+                
             } 
             // else {
                 // $id = $cl['st_num'];

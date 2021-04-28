@@ -1,4 +1,9 @@
  <!-- Begin Page Content -->
+ <style>
+p {
+    margin: 0px;
+}
+ </style>
  <div class="container-fluid">
      <div class="card mb-4 animated--grow-in">
          <div class="card-header py-3">
@@ -8,8 +13,8 @@
                  <span class="sr-only">Loading...</span>
              </div>
              <div class="float-right ">
-                 <a href="<?=base_url('admin/clients/sycnCRMClients');?>" class="btn btn-sm text-white"
-                     style="margin-top:-10px;" data-toggle="tooltip" data-placement="left" title="Sycn CRM Clients"><i
+                 <a href="#" data-toggle="modal" data-target="#sync" class="btn btn-sm text-white"
+                     style="margin-top:-10px;" data-toggle="tooltip" data-placement="left" title="Sync CRM Clients"><i
                          class="fas fa-sync animated--fade-in"></i></a>
              </div>
          </div>
@@ -22,7 +27,7 @@
                              <th>Student Name</th>
                              <th>Mentor Name</th>
                              <th>Email</th>
-                             <th>Phone</th>
+                             <th width="15%">Phone</th>
                              <th>City</th>
                          </tr>
                      </thead>
@@ -46,6 +51,47 @@
          </div>
      </div>
  </div>
+
+
+ <div class="modal fade" id="sync" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+         <div class="modal-content">
+             <div class="modal-header">
+                 <h6>Sync Bigdata Platform</h6>
+             </div>
+             <div class="modal-body" style="font-size:10px;">
+                 <table class="table table-bordered" width="100%">
+                     <tr class="text-center">
+                         <th>No</th>
+                         <th>Students Name</th>
+                         <th>Email</th>
+                         <th>Mentor Name</th>
+                     </tr>
+                     <?php $no=1; foreach ($bigdata_clients as $b): ?>
+                     <tr>
+                         <td class="text-center"><?=$no;?></td>
+                         <td><?=$b['first_name']." ".$b['last_name'];?></td>
+                         <td><?=$b['email'];?></td>
+                         <td class="text-center">
+                             <?php
+                                $mentor = $this->Mentors_model->getMentorsID($b['id_mentor']);
+                                echo $mentor['first_name']." ".$mentor['last_name'];
+                             ?>
+                         </td>
+                     </tr>
+                     <?php $no++; endforeach; ?>
+                 </table>
+             </div>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>
+                 <a href="<?=base_url('admin/clients/syncCRMClients');?>" class="btn btn-primary btn-sm">Save
+                     changes</a>
+             </div>
+         </div>
+     </div>
+ </div>
+
+ <script src="<?=base_url('assets/');?>vendor/jquery/jquery.min.js"></script>
  <!-- /.container-fluid -->
  <!-- <script>
 function alerts() {
