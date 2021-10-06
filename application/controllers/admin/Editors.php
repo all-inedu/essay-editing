@@ -213,5 +213,26 @@ class Editors extends CI_Controller
         echo 'hello';
     }
 
+    public function deactivate()
+    {
+        $id = $this->input->post('id');
+        $query = $this->Editors_model->getAllEditorsById($id);
+
+        if($query['status']==1) {
+            $data = [
+                'status' => 2,
+            ];
+            $this->Editors_model->updatePositionById($id, $data);
+        } else {
+            $data = [
+                'status' => 1,
+            ];
+            $this->Editors_model->updatePositionById($id, $data);
+        }
+
+        $this->session->set_flashdata('success', 'Editors has been updated');
+        redirect('admin/editors');
+    }
+
     
 }

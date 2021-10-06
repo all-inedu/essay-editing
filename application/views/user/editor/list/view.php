@@ -2,14 +2,23 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
-            <?=form_open_multipart('admin/editors/update');?>
-            <?=form_hidden('id_editors',$editors['id_editors']);?>
             <div class="card mb-2">
                 <div class="card-body">
                     <div class="main-img-preview text-center">
                         <img class="thumbnail img-preview"
                             src="<?=base_url('upload_files/user/editors/'.$editors['image']);?>" title="Preview Logo"
                             width="200px" height="auto">
+                    </div>
+                    <div class="text-center">
+                        <?php if($editors['status']==1) { ?>
+                        <button class="btn btn-warning" onclick="deactivate()">
+                            Deactivate
+                        </button>
+                        <?php } else { ?>
+                        <button class="btn btn-success" onclick="deactivate()">
+                            <i class="fas fa-check fa-fw"></i> Deactivated
+                        </button>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -68,6 +77,8 @@
 
         </div>
         <div class="col-md-9">
+            <!-- <?=form_open_multipart('admin/editors/update');?>
+            <?=form_hidden('id_editors',$editors['id_editors']);?> -->
             <div class="card mb-3 animated--grow-in">
                 <div class="card-header">
                     <div class="float-left pt-2"><i class="fas fa-file-upload"></i>&nbsp;
@@ -220,13 +231,35 @@
         </div>
     </div>
 </div>
+<div class="modal" tabindex="-1" role="dialog" id="deactivate">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <form action="<?=base_url('editor/lists/deactivate');?>" method="post">
+                    <input type="hidden" name="id" value="<?=$editors['id_editors'];?>">
+                    <?php if($editors['status']==1) {?>
+                    <h5 class="mb-3">Are you sure, <br> deactivate this editor?</h5>
+                    <?php } else { ?>
+                    <h5 class="mb-3">Are you sure, <br> activate this editor?</h5>
+                    <?php } ?>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Cancel</button>
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <?php $id = $editors['id_editors']; ?>
 <script src="<?=base_url('assets/');?>vendor/jquery/jquery.min.js"></script>
 <script>
+function deactivate() {
+    $('#deactivate').modal('show')
+}
+
 function completeEssay() {
     $.ajax({
         type: 'ajax',
-        method:'get',
+        method: 'get',
         url: '<?=base_url();?>admin/admin-json/completeEssayByEditors/<?=$id;?>',
         dataType: 'json',
         success: function(data) {
@@ -240,7 +273,7 @@ completeEssay();
 function get_average() {
     $.ajax({
         type: 'ajax',
-        method:'get',
+        method: 'get',
         url: '<?=base_url();?>admin/admin-json/numberOfRating/<?=$id;?>',
         dataType: 'json',
         success: function(data) {
@@ -250,7 +283,7 @@ function get_average() {
 
     $.ajax({
         type: 'ajax',
-        method:'get',
+        method: 'get',
         url: '<?=base_url();?>admin/admin-json/sumOfRating/<?=$id;?>',
         dataType: 'json',
         success: function(data) {

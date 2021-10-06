@@ -11,10 +11,11 @@ class Editors_model extends CI_model
     {
         $this->db->select('*');
         $this->db->from('tbl_editors');
-        $this->db->where('tbl_editors.status', 1);
+        // $this->db->where('tbl_editors.status', 1);
         $this->db->where('tbl_editors.position <', 4);
         $this->db->where('tbl_editors.email !=', $user);
         $this->db->join('tbl_position_editors', 'tbl_position_editors.id_position = tbl_editors.position');
+        $this->db->order_by('tbl_editors.first_name','ASC');
         return $this->db->get()->result_array();
     }
 
@@ -22,9 +23,10 @@ class Editors_model extends CI_model
     {
         $this->db->select('*');
         $this->db->from('tbl_editors');
-        $this->db->where('tbl_editors.status', 1);
+        // $this->db->where('tbl_editors.status', 1);
         $this->db->where('tbl_editors.email !=', $user);
         $this->db->join('tbl_position_editors', 'tbl_position_editors.id_position = tbl_editors.position');
+        $this->db->order_by('tbl_editors.first_name','ASC');
         return $this->db->get()->result_array();
     }
 
@@ -41,7 +43,7 @@ class Editors_model extends CI_model
     {
         $this->db->select('*');
         $this->db->from('tbl_editors');
-        $this->db->where('tbl_editors.status', 1);
+        // $this->db->where('tbl_editors.status', 1);
         $this->db->join('tbl_position_editors', 'tbl_position_editors.id_position = tbl_editors.position');
         return $this->db->get()->result_array();
     }
@@ -53,6 +55,7 @@ class Editors_model extends CI_model
         $this->db->where('tbl_editors.status', 1);
         $this->db->where('tbl_editors.position !=', 3);
         $this->db->join('tbl_position_editors', 'tbl_position_editors.id_position = tbl_editors.position');
+        $this->db->order_by('tbl_editors.first_name', 'ASC');
         return $this->db->get()->result_array();
     }
 

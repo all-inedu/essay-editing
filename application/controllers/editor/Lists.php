@@ -107,4 +107,25 @@ class Lists extends CI_Controller
         $this->load->view('templates/user/footer');
     }
 
+    public function deactivate()
+    {
+        $id = $this->input->post('id');
+        $query = $this->editors->getAllEditorsById($id);
+
+        if($query['status']==1) {
+            $data = [
+                'status' => 2,
+            ];
+            $this->editors->updatePositionById($id, $data);
+        } else {
+            $data = [
+                'status' => 1,
+            ];
+            $this->editors->updatePositionById($id, $data);
+        }
+
+        $this->session->set_flashdata('success', 'Editors has been updated');
+        redirect('editor/lists');
+    }
+
 }

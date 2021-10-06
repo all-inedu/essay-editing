@@ -21,6 +21,7 @@
                              <th>Due Within 3 Day</th>
                              <th>Due Within 5 Day</th>
                              <th>Position</th>
+                             <th>Status</th>
                              <th width="10px"></th>
                          </tr>
                      </thead>
@@ -46,6 +47,13 @@
                                  <?=$ongoing3;?> Essays
                              </td>
                              <td class="align-middle"><?= $e['position_name'];?></td>
+                             <td class="align-middle text-center">
+                                 <?php if($e['status']==1) { ?>
+                                 <div class="badge badge-success p-2">Activated</div>
+                                 <?php } else { ?>
+                                 <div class="badge badge-danger p-2">Deactivated</div>
+                                 <?php } ?>
+                             </td>
                              <td class="align-middle"><a
                                      href="<?=base_url();?>editor/lists/view/<?php echo $e['id_editors']; ?>"
                                      class="btn btn-block btn-sm btn-primary"><i class="fas fa-search"></i></a></td>

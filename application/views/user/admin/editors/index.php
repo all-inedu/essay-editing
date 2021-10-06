@@ -20,6 +20,7 @@
                              <th>Phone</th>
                              <th>City</th>
                              <th>Position</th>
+                             <th>Status</th>
                          </tr>
                      </thead>
                      <tbody>
@@ -34,7 +35,13 @@
                              <td class="align-middle"><?=$e['phone'];?></td>
                              <td class="align-middle"><?=$e['address'];?></td>
                              <td class="align-middle"><?=$e['position_name'];?></td>
-
+                             <td class="align-middle text-center">
+                                 <?php if($e['status']==1) { ?>
+                                 <div class="badge badge-success p-2">Activated</div>
+                                 <?php } else { ?>
+                                 <div class="badge badge-danger p-2">Deactivated</div>
+                                 <?php } ?>
+                             </td>
                          </tr>
                          <?php $no++;endforeach;?>
                      </tbody>
