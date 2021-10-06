@@ -18,8 +18,7 @@
 
                 <div class="card mb-2">
                     <div class="text-center p-3">
-                        <img src="<?=base_url('assets/img/doc.png');?>"
-                            alt="..." width="30%">
+                        <img src="<?=base_url('assets/img/doc.png');?>" alt="..." width="30%">
                     </div>
                     <div class="card-footer bg-success">
                         <a target="_blank"

@@ -137,7 +137,7 @@ class All_essay extends CI_Controller
         if($this->form_validation->run()==false) {
         $user = $this->session->userdata('email');
         $data['essay_reject'] = $this->Essay_model->getRejectedEssay($id);
-        $data['editor'] = $this->Editors_model->getAllEditors();
+        $data['editor'] = $this->Editors_model->getAllEditorsActive();
 
         $data['menus'] = 'all-essay';
         $data['submenus'] = 'ongoing';
@@ -194,7 +194,7 @@ class All_essay extends CI_Controller
         $status = $data['essay']['status_essay_clients'];
         if($status!='1'){ redirect('editor/all-essay/status/'.$id); } 
 
-        $data['editor'] = $this->Editors_model->getAllEditors();
+        $data['editor'] = $this->Editors_model->getAllEditorsActive();
         $data['menus'] = 'all-essay';
         $data['submenus'] = 'ongoing';
         $this->load->view('templates/user/header');
@@ -222,7 +222,7 @@ class All_essay extends CI_Controller
         // var_dump($data['revise']);
         if(($status!='2')AND($status!='3')AND($status!='6')AND($status!='8')){ redirect(admin/'essay-list/status/'.$id); } 
 
-        $data['editor'] = $this->Editors_model->getAllEditors();
+        $data['editor'] = $this->Editors_model->getAllEditorsActive();
         $data['tags'] = $this->Essay_model->getEssayTags($id);
         $data['status'] = $this->Essay_model->getEssayStatus($id_essay_clients);
         $data['menus'] = 'all-essay';
@@ -394,7 +394,7 @@ class All_essay extends CI_Controller
         
         if(($status!='7')){ redirect('editor/all-essay/status/'.$id); } 
 
-        $data['editor'] = $this->Editors_model->getAllEditors();
+        $data['editor'] = $this->Editors_model->getAllEditorsActive();
         $data['tags'] = $this->Essay_model->getEssayTags($id);
         $data['status'] = $this->Essay_model->getEssayStatus($id_essay_clients);
         $data['feedback'] = $this->Feedback_model->getFeedbackById($id);
