@@ -89,7 +89,8 @@ class Program extends CI_Controller
         $email = $this->session->userdata('email');
         $mentor = $this->mentors->getMentorsMail($email);
         $student_mail = $this->input->post('student');
-        $student = $this->Clients_model->getAllClientsById($student_mail);
+        $student_id = $this->input->post('student_id');
+        $student = $this->Clients_model->getAllClientsById($student_mail, $student_id);
         $file_name = $student['first_name'].'\'s Essay by '.$mentor['first_name'].'('.date('m-d-Y').')';
         $lastEssay = $this->essay->lastEssay();
         $last = $lastEssay['id_essay_clients'];

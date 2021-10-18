@@ -36,7 +36,7 @@ class Students extends CI_Controller
 
     public function view($id)
     {
-        $data['user'] = $this->Clients_model->getAllClientsById($id);
+        $data['user'] = $this->Clients_model->getAllClientsById("",$id);
         $data['id'] = $id;
         $data['menus'] = 'students';
         $data['submenus'] = '';
@@ -56,7 +56,7 @@ class Students extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['id'] = $id;
-            $data['user'] = $this->Clients_model->getAllClientsById($id);
+            $data['user'] = $this->Clients_model->getAllClientsById("",$id);
             $data['menus'] = 'students';
             $data['submenus'] = '';
             $data['status'] = 'edit';
@@ -74,6 +74,7 @@ class Students extends CI_Controller
     public function update($id)
     {
         $user = $this->session->userdata('email');
+        echo $id;
         
         $data['personal_brand'] = $this->input->post('personal_brand');
         $data['interests'] = $this->input->post('interests');
@@ -83,7 +84,7 @@ class Students extends CI_Controller
         $file_questionnaire = $_FILES['questionnaire']['name'];
         $file_others = $_FILES['others']['name'];
 
-        $students = $this->Clients_model->getAllClientsById($user);
+        $students = $this->Clients_model->getAllClientsById("", $id);
 
         // Activity Resume
         if ($file_resume) {
@@ -96,7 +97,7 @@ class Students extends CI_Controller
             $this->upload->initialize($config);
 
             if ($this->upload->do_upload('resume')) {
-                $students = $this->Clients_model->getAllClientsById($user);
+                $students = $this->Clients_model->getAllClientsById("", $id);
                 $old_file = $students['resume'];
                 $target = 'upload_files/user/students/resume/'.$old_file;
                     
@@ -125,7 +126,7 @@ class Students extends CI_Controller
             $this->upload->initialize($config);
 
             if ($this->upload->do_upload('questionnaire')) {
-                $students = $this->Clients_model->getAllClientsById($user);
+                $students = $this->Clients_model->getAllClientsById("",$id);
                 $old_file = $students['questionnaire'];
                 $target = 'upload_files/user/students/questionnaire/'.$old_file;
                     
@@ -154,7 +155,7 @@ class Students extends CI_Controller
             $this->upload->initialize($config);
 
             if ($this->upload->do_upload('others')) {
-                $students = $this->Clients_model->getAllClientsById($user);
+                $students = $this->Clients_model->getAllClientsById("",$id);
                 $old_file = $students['others'];
                 $target = 'upload_files/user/students/others/'.$old_file;
                     
