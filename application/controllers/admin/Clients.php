@@ -97,7 +97,7 @@ class Clients extends CI_Controller
 
     public function view($id)
     {
-        $data['user'] = $this->Clients_model->getAllClientsById($id);
+        $data['user'] = $this->Clients_model->getAllClientsById("",$id);
         $data['mentors'] = $this->Mentors_model->getAllMentors();
         $data['menus'] = 'users';
         $data['submenus'] = 'clients';
