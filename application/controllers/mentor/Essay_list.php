@@ -46,9 +46,10 @@ class Essay_list extends CI_Controller
         $user = $this->session->userdata('email');
         $data['essay'] = $this->Essay_model->getEssayClientsById($id); 
         $user = $data['essay']['email'];
+        $id_clients = $data['essay']['id_clients'];
         $id_prog = $data['essay']['id_program'];
         $data['history'] = $this->Essay_model->getEssayHistoryStatus($id);
-        $data['user'] = $this->Clients_model->getAllClientsById($user);
+        $data['user'] = $this->Clients_model->getAllClientsById($user, $id_clients);
         $data['status'] = $this->Essay_model->getEssayStatus($id);
         $data['program'] = $this->Program_model->programById($id_prog);
         $data['essay_editors'] = $this->Essay_model->getEssaybyEditors($id);

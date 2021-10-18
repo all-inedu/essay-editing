@@ -64,15 +64,16 @@ class Clients_model extends CI_model
         return $this->db2->get()->result_array();
     }
 
-    public function getAllClientsById($id)
+    public function getAllClientsById($email, $id)
     {
-        $email_client = $this->db->get_where('tbl_clients', ['email' => $id, 'status' => 1])->row_array();
         $id_client = $this->db->get_where('tbl_clients', ['id_clients' => $id, 'status' => 1])->row_array();
 
-        if ($email_client) {
-            return $email_client;
-        } else {
+        $email_client = $this->db->get_where('tbl_clients', ['email' => $email, 'status' => 1])->row_array();
+        
+        if ($id_client) {
             return $id_client;
+        } else {
+            return $email_client;
         }
     }
 

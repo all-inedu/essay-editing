@@ -17,19 +17,21 @@
                                         class="form-control form-control-sm">
                                 </div>
                             </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="text-dark">Student Name : <span class="text-danger">*</span></label>
-                                    <select name="student" id="student">
-                                        <option data-placeholder="true"></option>
-                                        <!-- <option value="">Select student name.</option> -->
-                                        <?php foreach($students as $s):?>
-                                        <option value="<?=$s['email'];?>">&#xf007; &nbsp;
-                                            <?=$s['first_name'].' '.$s['last_name'];?></option>
-                                        <?php endforeach;?>
-                                    </select>
-                                    <?=form_error('student', '<small
+                            <div class="col-md-6 mb-3">
+                                <label class="text-dark">Student Name : <span class="text-danger">*</span></label>
+                                <select name="student_id" id="student">
+                                    <option data-placeholder="true"></option>
+                                    <!-- <option value="">Select student name.</option> -->
+                                    <?php foreach($students as $s):?>
+                                    <option value="<?=$s['id_clients'];?>" data-email="<?=$s['email'];?>">&#xf007;
+                                        &nbsp;
+                                        <?=$s['first_name'].' '.$s['last_name'];?></option>
+                                    <?php endforeach;?>
+                                </select>
+                                <input type="hidden" id="stEmail" value="" name="student">
+                                <?=form_error('student', '<small
                                             class="text-info"><span class="text-danger">*</span>&nbsp;', '</small>');?>
-                                </div>
+                            </div>
                             <div class="col-md-6  mb-3">
                                 <label class="text-dark">Request (Editor) :</label>
                                 <select name="id_editors" id="editors">
@@ -104,7 +106,8 @@
                                 <input type="date" name="essay_deadline" class="form-control form-control-sm">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label class="text-dark">Application Deadline : <span class="text-danger">*</span></label>
+                                <label class="text-dark">Application Deadline : <span
+                                        class="text-danger">*</span></label>
                                 <input type="date" name="app_deadline" class="form-control form-control-sm">
                             </div>
                         </div>
@@ -205,4 +208,14 @@ function get_values() {
         document.getElementById('title1').style.display = 'none';
     }
 }
+
+$('#student').change(function() {
+    var selected = $(this).find('option:selected');
+    var email = selected.data('email');
+    if (email != "") {
+        $('#stEmail').val(email)
+    } else {
+        $('#stEmail').val('-')
+    }
+})
 </script>

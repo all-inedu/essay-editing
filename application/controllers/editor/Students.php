@@ -23,7 +23,7 @@ class Students extends CI_Controller
 
     public function view($id)
     {
-        $data['user'] = $this->Clients_model->getAllClientsById($id);
+        $data['user'] = $this->Clients_model->getAllClientsById("",$id);
         $data['menus'] = 'users';
         $data['submenus'] = '';
         $this->load->view('templates/user/header');

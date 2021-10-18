@@ -125,6 +125,7 @@ class Program extends CI_Controller
                     'id_editors' => $this->input->post('id_editors'),
                     'essay_title' => $title,
                     'essay_prompt' => $this->input->post('essay_prompt'),
+                    'id_clients' => $this->input->post('student_id'),
                     'email' => $student_mail,
                     'mentors_mail' => $this->session->userdata('email'),
                     'essay_deadline' => $this->input->post('essay_deadline'),

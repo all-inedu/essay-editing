@@ -66,8 +66,7 @@
                 <?php if (isset($essay)) { ?>
                 <div class="card mb-2">
                     <div class="text-center p-3">
-                        <img src="<?=base_url('assets/img/doc.png');?>"
-                            alt="..." width="30%">
+                        <img src="<?=base_url('assets/img/doc.png');?>" alt="..." width="30%">
                     </div>
                     <div class="card-footer bg-success">
                         <a href="<?=base_url('upload_files/program/essay/students/' . $essay['attached_of_clients']);?>"
@@ -80,8 +79,7 @@
                 <?php if ($status['status'] == '7') {?>
                 <div class="card mb-2">
                     <div class="text-center  p-3">
-                        <img src="<?=base_url('assets/img/doc.png');?>" alt="..."
-                            width="30%">
+                        <img src="<?=base_url('assets/img/doc.png');?>" alt="..." width="30%">
                     </div>
                     <div class="card-footer bg-primary">
                         <?php if($essay_editors['managing_file']) { ?>
@@ -114,7 +112,8 @@
                         <?php if (($essay['status_essay_clients']=='7')) { ?>
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <b>Thank you</b>, your essay has been completed.
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="margin-top:-5px;">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"
+                                style="margin-top:-5px;">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -138,10 +137,12 @@
                     <div class="card-header">
                         <div class="float-left mt-2"><i class="fas fa-users"></i>&nbsp; Basic Info</div>
                         <div class="float-right">
-                            <a href="<?=base_url('mentor/essay-list');?>" class="btn btn-sm btn-light text-decoration-none text-dark"><i class="fas fa-arrow-left"></i></a>
-                             <a href="<?=base_url('mentor/essay-list/delete/') . $essay['id_essay_clients'];?>"
-                                                         class="text-danger btn btn-sm btn-light delete-button ml-1" title="Delete"
-                                                         data-message="essay"><i class="fas fa-trash"></i></a>    
+                            <a href="<?=base_url('mentor/essay-list');?>"
+                                class="btn btn-sm btn-light text-decoration-none text-dark"><i
+                                    class="fas fa-arrow-left"></i></a>
+                            <a href="<?=base_url('mentor/essay-list/delete/') . $essay['id_essay_clients'];?>"
+                                class="text-danger btn btn-sm btn-light delete-button ml-1" title="Delete"
+                                data-message="essay"><i class="fas fa-trash"></i></a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -175,7 +176,8 @@
                             <tr>
                                 <td width="15%">Essay Title</td>
                                 <td class="align-middle" width="1%">:</td>
-                                <td class="align-middle"><?=$program['category_name'];?> Editing (<?=$program['minimum_word'].' - '.$program['maximum_word'];?> Words)</td>
+                                <td class="align-middle"><?=$program['category_name'];?> Editing
+                                    (<?=$program['minimum_word'].' - '.$program['maximum_word'];?> Words)</td>
                             </tr>
                             <tr>
                                 <td width="15%">University Name</td>
@@ -207,8 +209,10 @@
                                 <td width="15%">Date</td>
                                 <td class="" width="1%">:</td>
                                 <td class="">
-                                    <p class="font-weight-bold"><i class="fa fa-calendar"></i>  &nbsp; Essay Deadline : <?=date('D, d M Y', strtotime($essay['essay_deadline']));?></p>
-                                    <p class="font-weight-bold"><i class="fa fa-calendar"></i>  &nbsp; Application Deadline : <?=date('D, d M Y', strtotime($essay['application_deadline']));?></p>
+                                    <p class="font-weight-bold"><i class="fa fa-calendar"></i> &nbsp; Essay Deadline :
+                                        <?=date('D, d M Y', strtotime($essay['essay_deadline']));?></p>
+                                    <p class="font-weight-bold"><i class="fa fa-calendar"></i> &nbsp; Application
+                                        Deadline : <?=date('D, d M Y', strtotime($essay['application_deadline']));?></p>
 
                                 </td>
                             </tr>
@@ -222,14 +226,15 @@
                                 <td width="15%">Editor Upload Date</td>
                                 <td class="" width="1%">:</td>
                                 <td class="">
-                                <p class="font-weight-bold"><i class="fa fa-calendar"></i>  &nbsp; <?=date('D, d M Y', strtotime($essay_editors['uploaded_at']));?></p>
+                                    <p class="font-weight-bold"><i class="fa fa-calendar"></i> &nbsp;
+                                        <?=date('D, d M Y', strtotime($essay_editors['uploaded_at']));?></p>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="align-middle" width="15%">Essay Status</td>
                                 <td class="align-middle" width="1%">:</td>
                                 <td class="align-middle">
-                                <?=$status_essay;?>
+                                    <?=$status_essay;?>
                                 </td>
                             </tr>
                             <?php }?>

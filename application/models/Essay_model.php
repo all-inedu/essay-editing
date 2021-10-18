@@ -35,7 +35,8 @@ class Essay_model extends CI_model
         $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program');
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+        // $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email');  
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
         $this->db->order_by('tbl_essay_clients.uploaded_at', 'DESC');
         return $this->db->get()->result_array();
@@ -67,7 +68,8 @@ class Essay_model extends CI_model
         $this->db->where('year(tbl_essay_editors.uploaded_at)', $y);
         $this->db->join('tbl_editors', 'tbl_editors.email = tbl_essay_editors.editors_mail');
         $this->db->join('tbl_essay_clients', 'tbl_essay_clients.id_essay_clients = tbl_essay_editors.id_essay_clients');
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        // $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program');
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_editors.status_essay_editors');
@@ -102,7 +104,8 @@ class Essay_model extends CI_model
         $this->db->where('tbl_essay_editors.editors_mail', $e);
         $this->db->join('tbl_editors', 'tbl_editors.email = tbl_essay_editors.editors_mail');
         $this->db->join('tbl_essay_clients', 'tbl_essay_clients.id_essay_clients = tbl_essay_editors.id_essay_clients');
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        // $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program');
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_editors.status_essay_editors');
@@ -120,7 +123,8 @@ class Essay_model extends CI_model
             $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
             $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program');
             $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-            $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+ 
+            $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
             $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
             $this->db->order_by('tbl_essay_clients.status_read', 'ASC');
             $this->db->order_by('tbl_essay_clients.essay_deadline', 'ASC');
@@ -132,7 +136,8 @@ class Essay_model extends CI_model
             $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
             $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program'); 
             $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-            $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+ 
+            $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
             $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
             $this->db->order_by('tbl_essay_clients.status_read', 'ASC');
             $this->db->order_by('tbl_essay_clients.essay_deadline', 'ASC');
@@ -148,7 +153,7 @@ class Essay_model extends CI_model
         $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program'); 
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
         $this->db->order_by('tbl_essay_clients.essay_deadline', 'ASC');
         return $this->db->get()->result_array();
@@ -162,7 +167,7 @@ class Essay_model extends CI_model
         $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program'); 
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email');  
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
         $this->db->join('tbl_essay_editors', 'tbl_essay_editors.id_essay_clients = tbl_essay_clients.id_essay_clients');
         $this->db->order_by('tbl_essay_clients.essay_deadline', 'ASC');
@@ -177,7 +182,8 @@ class Essay_model extends CI_model
         $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program'); 
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+        // $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email');  
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
         $this->db->join('tbl_essay_editors', 'tbl_essay_editors.id_essay_clients = tbl_essay_clients.id_essay_clients');
         $this->db->order_by('tbl_essay_clients.essay_deadline', 'ASC');
@@ -193,7 +199,7 @@ class Essay_model extends CI_model
         $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program'); 
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email');  
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
         $this->db->join('tbl_essay_editors', 'tbl_essay_editors.id_essay_clients = tbl_essay_clients.id_essay_clients');
         $this->db->order_by('tbl_essay_clients.status_read', 'ASC');
@@ -208,8 +214,8 @@ class Essay_model extends CI_model
         $this->db->where('tbl_essay_clients.mentors_mail =',$user);
         $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program');
-        $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+        $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category');  
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
         $this->db->order_by('tbl_essay_clients.status_read', 'ASC');
         return $this->db->get()->result_array();
@@ -227,7 +233,8 @@ class Essay_model extends CI_model
             $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
             $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program');
             $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-            $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+ 
+            $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
             $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
             $this->db->order_by('tbl_essay_clients.uploaded_at', 'DESC');
             return $this->db->get()->result_array();
@@ -240,7 +247,8 @@ class Essay_model extends CI_model
             $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
             $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program'); 
             $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category');
-            $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+            // $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+            $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email');  
             $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
             $this->db->order_by('tbl_essay_clients.uploaded_at', 'DESC');
             return $this->db->get()->result_array();
@@ -275,7 +283,7 @@ class Essay_model extends CI_model
         $this->db->where('tbl_essay_clients.id_essay_clients', $id);
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program');
         $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email','left'); 
         return $this->db->get()->row_array();
     }
 
@@ -444,7 +452,7 @@ class Essay_model extends CI_model
         $this->db->where('tbl_essay_editors.editors_mail', $user);
         $this->db->where('tbl_essay_editors.status_essay_editors !=', 7);
         $this->db->join('tbl_essay_clients', 'tbl_essay_clients.id_essay_clients = tbl_essay_editors.id_essay_clients');
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program');
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_editors.status_essay_editors');
@@ -460,7 +468,8 @@ class Essay_model extends CI_model
         $this->db->where('tbl_essay_editors.editors_mail', $user);
         $this->db->where('tbl_essay_editors.status_essay_editors =', 7);
         $this->db->join('tbl_essay_clients', 'tbl_essay_clients.id_essay_clients = tbl_essay_editors.id_essay_clients');
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        // $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program');
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_editors.status_essay_editors');
@@ -596,7 +605,8 @@ class Essay_model extends CI_model
         $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program'); 
         $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+        // $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email');  
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
         $this->db->order_by('tbl_essay_clients.essay_deadline', 'ASC');
         return $this->db->get()->result_array();
@@ -627,8 +637,8 @@ class Essay_model extends CI_model
         $this->db->where('tbl_essay_clients.essay_deadline <=', $dueDate);
         $this->db->join('tbl_universities', 'tbl_universities.id_univ = tbl_essay_clients.id_univ');
         $this->db->join('tbl_programs', 'tbl_programs.id_program = tbl_essay_clients.id_program'); 
-        $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category'); 
-        $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email'); 
+        $this->db->join('tbl_categories', 'tbl_categories.id_category = tbl_programs.id_category');  
+        $this->db->join('tbl_clients', 'tbl_clients.id_clients = tbl_essay_clients.id_clients or tbl_clients.email = tbl_essay_clients.email'); 
         $this->db->join('tbl_status', 'tbl_status.id = tbl_essay_clients.status_essay_clients');
         $this->db->order_by('tbl_essay_clients.essay_deadline', 'ASC');
         return $this->db->get()->result_array();
