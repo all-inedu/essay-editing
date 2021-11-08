@@ -55,15 +55,22 @@
         font-family: 'Roboto', sans-serif;
     }
 
+    body.swal2-shown>[aria-hidden="true"] {
+        transition: 0.1s filter;
+        filter: blur(4px);
+    }
+
     p {
         line-height: 1.6 !important;
     }
 
-    .table td, .table th {
+    .table td,
+    .table th {
         padding: 8px 10px !important;
     }
 
-    .form-control, .thumbnail {
+    .form-control,
+    .thumbnail {
         font-size: 13px !important;
     }
 

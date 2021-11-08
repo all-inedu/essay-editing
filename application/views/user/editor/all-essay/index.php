@@ -12,6 +12,7 @@
                              <tr>
                                  <th>No</th>
                                  <th>Student Name</th>
+                                 <th>Mentor Name</th>
                                  <th>Editor Name</th>
                                  <th>Request (Editor)</th>
                                  <th>Program Name</th>
@@ -34,9 +35,12 @@
                                     $title = "Read";
                                 }
                             ?>
-                             <tr class="<?=$read;?>" data-toggle="tooltip" data-placement="top" title="<?=$title;?>"  style="cursor:pointer" onclick="window.open('<?=base_url('editor/all-essay/status/'.$e['id_essay_clients']);?>')">
+                             <tr class="<?=$read;?>" data-toggle="tooltip" data-placement="top" title="<?=$title;?>"
+                                 style="cursor:pointer"
+                                 onclick="window.open('<?=base_url('editor/all-essay/status/'.$e['id_essay_clients']);?>')">
                                  <td class=" text-center align-middle"><?=$no;?></td>
                                  <td class="align-middle"><?=$e['first_name'] . ' ' . $e['last_name'];?></td>
+                                 <td class="align-middle"><?=$e['mt_fn'] . ' ' . $e['mt_ln'];?></td>
                                  <td class="align-middle">
                                      <?php
                                         $id = $e['id_essay_clients'];
@@ -49,7 +53,7 @@
                                     ?>
                                  </td>
                                  <td class="align-middle">
-                                        <?php 
+                                     <?php 
                                             if($e['id_editors']>0) {
                                                 $req = $this->Editors_model->getAllEditorsById($e['id_editors']);
                                                 echo $req['first_name'].' '.$req['last_name'];

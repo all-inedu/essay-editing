@@ -68,6 +68,15 @@
 <!-- <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script> -->
 <script src="<?=base_url('assets/js/ckeditor/ckeditor.js');?>"></script>
 <script>
+$('form').submit(function(e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Please wait a minute',
+    })
+    Swal.showLoading();
+    this.closest('form').submit();
+})
+
 CKEDITOR.replaceAll();
 
 $(document).ready(function() {

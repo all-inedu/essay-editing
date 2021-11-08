@@ -11,6 +11,7 @@
                          <tr>
                              <th>No</th>
                              <th>Student Name</th>
+                             <th>Mentor Name</th>
                              <th>Program Name</th>
                              <th>Title</th>
                              <th>Upload Date</th>
@@ -34,6 +35,7 @@
                          <tr class="<?=$read;?>" data-toggle="tooltip" data-placement="top" title="<?=$title;?>">
                              <td class=" text-center align-middle"><?=$no;?></td>
                              <td class="align-middle"><?=$e['first_name'] . ' ' . $e['last_name'];?></td>
+                             <td class="align-middle"><?=$e['mt_fn'] . ' ' . $e['mt_ln'];?></td>
                              <td class="align-middle"><?=$e['program_name'];?></td>
                              <td class="align-middle"><?=$e['essay_title'];?></td>
                              <td class="align-middle"><?=date('D, d M Y', strtotime($e['uploaded_at']));?></td>
@@ -64,6 +66,7 @@
                          <tr>
                              <th>No</th>
                              <th>Student Name</th>
+                             <th>Mentor Name</th>
                              <th>Editor Name</th>
                              <th>Program Name</th>
                              <th>Title</th>
@@ -88,6 +91,7 @@
                          <tr class="<?=$read;?>" data-toggle="tooltip" data-placement="top" title="<?=$title;?>">
                              <td class=" text-center align-middle"><?=$no;?></td>
                              <td class="align-middle"><?=$v['first_name'] . ' ' . $v['last_name'];?></td>
+                             <td class="align-middle"><?=$v['mt_fn'] . ' ' . $v['mt_ln'];?></td>
                              <td class="align-middle">
                                  <?php
                                         $id = $v['id_essay_clients'];
