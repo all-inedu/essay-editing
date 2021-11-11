@@ -57,13 +57,14 @@ class Essay_list extends CI_Controller
 
             $this->form_validation->set_rules('tags[]', 'Tags', 'required');
 
-            if($this->form_validation->run()==false){        
+            if($this->form_validation->run()==false){     
                 $this->load->view('templates/user/header');
                 $this->load->view('templates/user/sidebar-editors', $data);
                 $this->load->view('templates/user/topbar-editors');
                 $this->load->view('user/editor/essay-list/view-essay', $data);
                 $this->load->view('templates/user/footer');
-                if($this->input->post('comments')){
+
+                if($this->input->post('notes_editors')!=""){
                     $this->commentsEssay($id);
                 }
             } else {
@@ -71,7 +72,7 @@ class Essay_list extends CI_Controller
                     $this->updateEssayEditors();
                 } else if($this->input->post('revision')){
                     $this->updateEssayEditorsRevision(); 
-                } 
+                }
             }
         } else {
             $this->session->set_flashdata('error', 'Students Essay is not found.');

@@ -1,7 +1,7 @@
 <style>
-    input{
-        border-radius:10px;
-    }
+input {
+    border-radius: 10px;
+}
 </style>
 <div id="programs">
     <div class="container-fluid">
@@ -20,11 +20,11 @@
 
                 <div class="card mb-2">
                     <div class="text-center p-3">
-                        <img src="<?=base_url('assets/img/doc.png');?>"
-                            alt="..." width="30%">
+                        <img src="<?=base_url('assets/img/doc.png');?>" alt="..." width="30%">
                     </div>
                     <div class="card-footer bg-success">
-                        <a target="_blank" href="<?=base_url('upload_files/program/essay/students/' . $essay['attached_of_clients']);?>"
+                        <a target="_blank"
+                            href="<?=base_url('upload_files/program/essay/students/' . $essay['attached_of_clients']);?>"
                             class="btn btn-sm btn-block text-light">Download Students Essay</a>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                         <i class="fas fa-tasks"></i>&nbsp; Essay Detail
                     </div>
                     <div class="card-body">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="" method="post" enctype="multipart/form-data" id="formAccepted">
                             <?php
                         echo form_hidden('id_essay_clients', $essay['id_essay_clients']);
                     ?>
@@ -221,7 +221,10 @@
                                                         <?=$r['notes'];?>
                                                     </p>
                                                     <?php if($r['file']!=''){ ?>
-                                                        <a href="<?=base_url('upload_files/program/essay/revise/'.$r['file']);?>" target="_blank" class="text-warning text-decoration-none"><i class="fas fa-file-word"></i>&nbsp; Download attachments.</a>
+                                                    <a href="<?=base_url('upload_files/program/essay/revise/'.$r['file']);?>"
+                                                        target="_blank" class="text-warning text-decoration-none"><i
+                                                            class="fas fa-file-word"></i>&nbsp; Download
+                                                        attachments.</a>
                                                     <?php } ?>
                                                 </div>
                                             </div>
@@ -274,18 +277,22 @@
                                                 <input id="fakeUploadLogo" class="form-control form-control-sm fake"
                                                     placeholder="Choose File" readonly>
                                                 <div class="input-group-btn btn-group-sm">
-                                                    <div class="fileUpload btn bg-dark text-light fake" style="margin-left:-20px;">
+                                                    <div class="fileUpload btn bg-dark text-light fake"
+                                                        style="margin-left:-20px;">
                                                         <span><i class="fas fa-upload"></i></span>
-                                                        <input id="logo-id" name="files" type="file" class="attachment_upload">
+                                                        <input id="logo-id" name="files" type="file"
+                                                            class="attachment_upload">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <small class="text-danger">Upload your revise file with the *docx format.</small>
+                                            <small class="text-danger">Upload your revise file with the *docx
+                                                format.</small>
                                         </div>
                                     </div>
                                     <div class="text-right mt-2">
-                                        <button type="submit" name="revision" value="revision"
-                                            class="btn btn-danger btn-sm"><i
+                                        <input type="hidden" name="form_name" id="formName">
+                                        <button type="button" class="btn btn-danger btn-sm"
+                                            onclick="checkForm('revise')"><i
                                                 class="fas fa-exclamation-circle"></i>&nbsp;
                                             Revise</button>
                                     </div>
@@ -294,11 +301,13 @@
                             <hr style="border:1px dashed #dedede;">
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <div class="form-control" style="padding-left:30px; font-size:13px; padding-bottom:30px;">
-                                      <input class="form-check-input" type="checkbox"id="myCheck" onclick="myFunction()" name="check_file" value="1">
-                                      <label class="form-check-label text-primary" style="padding-top:2px;">
-                                        <i>Accept and upload your essay.</i>
-                                      </label>
+                                    <div class="form-control"
+                                        style="padding-left:30px; font-size:13px; padding-bottom:30px;">
+                                        <input class="form-check-input" type="checkbox" id="myCheck"
+                                            onclick="myFunction()" name="check_file" value="1">
+                                        <label class="form-check-label text-primary" style="padding-top:2px;">
+                                            <i>Accept and upload your essay.</i>
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="col-md-6" style="display:none" id="managingUpload">
@@ -314,11 +323,12 @@
                             <div class="row mt-3">
                                 <div class="col-md-12 text-center">
                                     <?php if(($status['status']=='3') OR ($status['status']=='8')) {?>
-                                    <button type="submit" name="verify" value="verify" class="btn btn-success btn-sm"><i
-                                            class='fas fa-clipboard-check'></i>&nbsp; Accept</button>
+                                    <button type="button" class="btn btn-success btn-sm"
+                                        onclick="checkForm('verify')"><i class='fas fa-clipboard-check'></i>&nbsp;
+                                        Accept</button>
 
                                     <?php } else if(($status['status']=='6')) {?>
-                                    <button type="submit" name="verify" value="verify" class="btn btn-info btn-sm"><i
+                                    <button type="button" class="btn btn-info btn-sm" onclick="checkForm('verify')"><i
                                             class='fas fa-clipboard-check'></i>&nbsp; Cancel,
                                         Accept</button>
                                     <?php }?>
@@ -332,24 +342,27 @@
 
     </div>
 </div>
+<script src="<?=base_url('assets/');?>vendor/jquery/jquery.min.js">
+</script>
 <script>
-// function programs() {
-//     $("#programs").load(" #programs");
-//     console.log("Test");
-// }
+// $(document).ready(function() {
+function checkForm(name) {
+    $('#formName').val(name);
+    $('#formAccepted').submit();
+}
+// })
 
-// setInterval(programs, 180000);
 function myFunction() {
-  // Get the checkbox
-  var checkBox = document.getElementById("myCheck");
-  // Get the output text
-  var text = document.getElementById("managingUpload");
+    // Get the checkbox
+    var checkBox = document.getElementById("myCheck");
+    // Get the output text
+    var text = document.getElementById("managingUpload");
 
-  // If the checkbox is checked, display the output text
-  if (checkBox.checked == true){
-    text.style.display = "block";
-  } else {
-    text.style.display = "none";
-  }
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true) {
+        text.style.display = "block";
+    } else {
+        text.style.display = "none";
+    }
 }
 </script>

@@ -231,19 +231,20 @@ class All_essay extends CI_Controller
         $this->form_validation->set_rules('notes_editors', 'Notes for Editors', 'required');
 
         if ($this->form_validation->run()==false){
-        $this->load->view('templates/user/header');
-        $this->load->view('templates/user/sidebar-editors', $data);
-        $this->load->view('templates/user/topbar-editors');
-        $this->load->view('user/editor/all-essay/accept-essay');
-        $this->load->view('templates/user/footer');
+            $this->load->view('templates/user/header');
+            $this->load->view('templates/user/sidebar-editors', $data);
+            $this->load->view('templates/user/topbar-editors');
+            $this->load->view('user/editor/all-essay/accept-essay');
+            $this->load->view('templates/user/footer');
 
-        if($this->input->post('verify')){
-            $this->_verify();
-        }
+            // echo $this->input->post('formName');
+            if($this->input->post('form_name')=='verify'){
+                $this->_verify();
+            }
         
         } else {
-            if($this->input->post('revision')) {
-            $this->_revision();
+            if($this->input->post('form_name')=='revise') {
+                $this->_revision();
             }
         }
     }
