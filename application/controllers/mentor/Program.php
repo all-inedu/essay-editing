@@ -91,7 +91,7 @@ class Program extends CI_Controller
         $student_mail = $this->input->post('student');
         $student_id = $this->input->post('student_id');
         $student = $this->Clients_model->getAllClientsById($student_mail, $student_id);
-        $file_name = $student['first_name'].'\'s Essay by '.$mentor['first_name'].'('.date('m-d-Y').')';
+        $file_name = $student['first_name'].'\'s Essay by '.$mentor['first_name'].'('.date('d-m-Y').')';
         $lastEssay = $this->essay->lastEssay();
         $last = $lastEssay['id_essay_clients'];
         // $count = count($this->essay->countEssayList());

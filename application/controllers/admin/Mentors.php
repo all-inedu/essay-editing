@@ -49,7 +49,8 @@ class Mentors extends CI_Controller
                     'graduated_from' => $mt['univ_name'],
                     'address' => $mt['mt_address'],
                     'status' => '1',
-                    'password' => $mt['mt_password'],
+                    'password' => password_hash('all-in mentor', PASSWORD_DEFAULT),
+                    // 'password' => $mt['mt_password'],
                     'created_at' => date('Y-m-d H:i:s'),
                 ];
                 $this->Mentors_model->importMentorsCRM($mentors);

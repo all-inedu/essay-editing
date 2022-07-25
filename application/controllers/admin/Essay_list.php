@@ -355,13 +355,15 @@ class Essay_list extends CI_Controller
         }   else {
             $this->email->attach('upload_files/program/essay/editors/' . $editor['attached_of_editors']);
         }
+        
+        $this->email->send();
 
-        if ($this->email->send()) {
-            return true;
-        } else {
-            echo $this->email->print_debugger();
-            die;
-        }
+        // if ($this->email->send()) {
+        //     return true;
+        // } else {
+        //     echo $this->email->print_debugger();
+        //     die;
+        // }
         
         
     }
