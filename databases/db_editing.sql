@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2022 at 07:14 AM
+-- Generation Time: Jul 25, 2022 at 07:34 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -102,7 +102,7 @@ CREATE TABLE `tbl_clients` (
 --
 
 INSERT INTO `tbl_clients` (`id_clients`, `first_name`, `last_name`, `phone`, `email`, `birthdate`, `country`, `state`, `city`, `postal_code`, `address`, `id_mentor`, `current_school`, `school_name`, `curriculum`, `year`, `image`, `personal_brand`, `interests`, `personalities`, `resume`, `questionnaire`, `others`, `role`, `status`, `password`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Student', 'Dummy', '123456789', 'student.dummy@example.com', '2000-01-31', 'Indonesia', 'DKI Jakarta', 'Jakarta', '11630', 'Jl Jeruk kembar blok Q9 no. 15', 'MT-0001', '', '', '', 0, '', '', '', '', '', '', '', '', 1, '$2y$10$W/aX9r0YpzH/3IkJTjEuy.WV6eTeIkuBtX9fRd71f7WCcEqBJtIXC', '2022-07-25 04:54:20', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(0, 'Student', 'Dummy', '123456789', 'student.dummy@example.com', '2000-01-31', 'Indonesia', 'DKI Jakarta', 'Jakarta', '11630', 'Jl Jeruk kembar blok Q9 no. 15', 'MT-0001', '', '', '', 0, '', '', '', '', '', '', '', '', 1, '$2y$10$W/aX9r0YpzH/3IkJTjEuy.WV6eTeIkuBtX9fRd71f7WCcEqBJtIXC', '2022-07-25 05:28:39', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -351,6 +351,15 @@ CREATE TABLE `tbl_programs` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_programs`
+--
+
+INSERT INTO `tbl_programs` (`id_program`, `program_name`, `id_category`, `description`, `price`, `discount`, `minimum_word`, `maximum_word`, `completed_within`, `images`, `status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Essay Editing', 1, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0, 0, 50, 100, '48', 'default.png', 1, '2019-08-23 08:02:44', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Resume Editing', 2, 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0, 0, 0, 0, '72', 'default.png', 1, '2022-07-25 05:33:17', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Cover Letter Editing', 3, 'dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.', 0, 0, 0, 0, '72', 'default.png', 1, '2022-07-25 05:33:19', '2019-08-23 08:07:01', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1064,7 +1073,7 @@ ALTER TABLE `tbl_essay_tags`
 -- AUTO_INCREMENT for table `tbl_programs`
 --
 ALTER TABLE `tbl_programs`
-  MODIFY `id_program` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_program` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_tags`
