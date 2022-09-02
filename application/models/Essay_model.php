@@ -42,7 +42,7 @@ class Essay_model extends CI_model
         return $this->db->get()->result_array();
     }
 
-    public function getEssayEditorsExport($m, $y)
+    public function getEssayEditorsExport($m, $y, $essay_type=null)
     {
         $this->db->select('
         tbl_editors.first_name as editors_fn,
@@ -66,6 +66,9 @@ class Essay_model extends CI_model
         $this->db->where('tbl_essay_editors.status_essay_editors =', 7);
         $this->db->where('month(tbl_essay_editors.uploaded_at)', $m);
         $this->db->where('year(tbl_essay_editors.uploaded_at)', $y);
+        if ($essay_type != null) {
+            $this->db->like('tbl_essay_clients.essay_title', $essay_type);
+        }
         $this->db->join('tbl_editors', 'tbl_editors.email = tbl_essay_editors.editors_mail');
         $this->db->join('tbl_essay_clients', 'tbl_essay_clients.id_essay_clients = tbl_essay_editors.id_essay_clients');
         // $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');
@@ -77,7 +80,7 @@ class Essay_model extends CI_model
         return $this->db->get()->result_array();
     }
     
-    public function getEssayEditorsExportByEditors($m, $y, $e)
+    public function getEssayEditorsExportByEditors($m, $y, $e, $essay_type=null)
     {
         $this->db->select('
         tbl_editors.first_name as editors_fn,
@@ -102,6 +105,9 @@ class Essay_model extends CI_model
         $this->db->where('month(tbl_essay_editors.uploaded_at)', $m);
         $this->db->where('year(tbl_essay_editors.uploaded_at)', $y);
         $this->db->where('tbl_essay_editors.editors_mail', $e);
+        if ($essay_type != null) {
+            $this->db->like('tbl_essay_clients.essay_title', $essay_type);
+        }
         $this->db->join('tbl_editors', 'tbl_editors.email = tbl_essay_editors.editors_mail');
         $this->db->join('tbl_essay_clients', 'tbl_essay_clients.id_essay_clients = tbl_essay_editors.id_essay_clients');
         // $this->db->join('tbl_clients', 'tbl_clients.email = tbl_essay_clients.email');

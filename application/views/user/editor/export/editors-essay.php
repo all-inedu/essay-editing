@@ -25,7 +25,7 @@
                                         class="text-info"><span class="text-danger">*</span>&nbsp;', '</small>');?>
                              </div>
                              
-                             <div class="col">
+                             <div class="col mb-3">
                                  <label>Month</label>
                                  <select name="month" id="month">
                                      <option value="01" <?php if($month==1){echo 'selected';}?>>Januari</option>
@@ -53,6 +53,16 @@
                                     }
                                 ?>
                                  </select>
+                             </div>
+                             <div class="col-md-12">
+                                <label>Essay Type</label>
+                                <select name="essay_type" id="essay_type">
+                                    <option data-placeholder="true"></option>
+                                    <?php foreach ($essay_title as $p): ?>
+                                    <option value="<?= $p; ?>" <?php if($p==$et){echo 'selected';}?>>
+                                        &#xf02b; &nbsp; <?= $p; ?></option>
+                                    <?php endforeach;?>
+                                </select>
                              </div>
                          </div>
                          <hr>
@@ -140,6 +150,12 @@ new SlimSelect({
 new SlimSelect({
     select: '#year',
     placeholder: 'Select year.',
+    allowDeselect: true
+})
+
+new SlimSelect({
+    select: '#essay_type',
+    placeholder: 'Select essay type.',
     allowDeselect: true
 })
  </script>

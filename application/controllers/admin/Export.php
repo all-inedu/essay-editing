@@ -61,24 +61,30 @@ class Export extends CI_Controller
             $data['se'] = '';
             $data['month'] = date('m');
             $data['year'] = date('Y');
+            $data['et'] = '';
             $data['essay'] = $this->Essay_model->getEssayEditorsExport($m='', $y='');
         } else {
             $m = $this->input->post('month');
             $y = $this->input->post('year');
             $e = $this->input->post('editors');
+            $essay_type = $this->input->post('essay_type');
             
             if($e=='all'){
                 $data['se'] = 'all';
                 $data['month']  = $m;
                 $data['year'] = $y;
-                $data['essay'] = $this->Essay_model->getEssayEditorsExport($m, $y);
+                $data['et'] = $essay_type;
+                $data['essay'] = $this->Essay_model->getEssayEditorsExport($m, $y, $essay_type);
             } else {
                 $data['se'] = $e;
                 $data['month']  = $m;
                 $data['year'] = $y;
-                $data['essay'] = $this->Essay_model->getEssayEditorsExportByEditors($m, $y, $e); 
+                $data['et'] = $essay_type;
+                $data['essay'] = $this->Essay_model->getEssayEditorsExportByEditors($m, $y, $e, $essay_type); 
             }
         }
+        $data['essay_title'] = ['Common App','Coalition App', 'UCAS', 'Personal Statement', 'Supplemental Essay','Other'];
+        
         $this->load->view('templates/user/header');
         $this->load->view('templates/user/sidebar', $data);
         $this->load->view('templates/user/topbar');

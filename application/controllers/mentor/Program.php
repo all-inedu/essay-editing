@@ -51,7 +51,7 @@ class Program extends CI_Controller
         $data['prompt'] = $this->essay->getAllEssayPrompt();
         $data['menus'] = 'program';
         $data['submenus'] = '';
-        $data['essay_title'] = ['Common App','Coalition App', 'UCAS', 'Personal Statement', 'Supplemental Essay','Other'];
+        $data['essay_title'] = ['Common App','Coalition App', 'UCAS', 'Personal Statement', 'Supplemental Essay', 'Digital Team Blog Post','Other'];
 
         $this->form_validation->set_rules('student', 'Students Name', 'required');
         $this->form_validation->set_rules('univ_name', 'Universities Name', 'required');
@@ -91,7 +91,7 @@ class Program extends CI_Controller
         $student_mail = $this->input->post('student');
         $student_id = $this->input->post('student_id');
         $student = $this->Clients_model->getAllClientsById($student_mail, $student_id);
-        $file_name = $student['first_name'].'\'s Essay by '.$mentor['first_name'].'('.date('m-d-Y').')';
+        $file_name = $student['first_name'].'\'s Essay by '.$mentor['first_name'].'('.date('d-m-Y').')';
         $lastEssay = $this->essay->lastEssay();
         $last = $lastEssay['id_essay_clients'];
         // $count = count($this->essay->countEssayList());
